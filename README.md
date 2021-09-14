@@ -7,7 +7,7 @@ It includes several ".mat" files as follows:
 - OMNparameters: this file includes the parameters of the OMNs based on information found in the literature (see paper for details). The parameters are the eye position threshold, position, velocity and accelration sensetivies. 
 
 In addition the repository includes ".m" files as follows:
--"Run_model.m": this is the main file  which executes the dynamics of the network and saves the results to ".mat" files.
--"Full_model_simulation": this file contains the dynamical equations of our model and actually caries all the math.
--"draw_from_linear_regression": auxiliary function which samples parameters randomly according to Eqs.29,30,32 in the paper.
--"msdFFT": auxiliary function which calculates the meas sqaured displacement exploiting the Wiener-Khinchin theorem and the FFT algorithm.
+- "Run_model.m": this is the main file  which executes the dynamics of the network and saves the results to ".mat" files.
+- "Full_model_simulation": this file contains the dynamical equations of our model and actually caries all the math.
+- "draw_from_linear_regression": auxiliary function which samples parameters randomly according to Eqs.29,30,32 in the paper.
+- "msdFFT": auxiliary function which calculates the meas sqaured displacement exploiting the Wiener-Khinchin theorem and the FFT algorithm.
