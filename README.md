@@ -1,4 +1,4 @@
-# Fixational-drift-is-driven-by-diffusive-dynamics-in-central-neuralcircuitry
+# Fixational-drift-is-driven-by-diffusive-dynamics-in-central-neural-circuitry
 This repository provides the code of the computational model presented in the paper "Fixational drift is driven by diffusive dynamics"
 
 It includes several ".mat" files as follows:
@@ -7,4 +7,3 @@ It includes several ".mat" files as follows:
 - OMNparameters: this file includes the parameters of the OMNs based on information found in the literature (see paper for details). The parameters are the eye position threshold, position, velocity and accelration sensetivies. 
 
 In addition the repository includes ".m" files, the main file is "Run_model" which executes the dynamics of the network and saves the results to ".mat" files.
-
