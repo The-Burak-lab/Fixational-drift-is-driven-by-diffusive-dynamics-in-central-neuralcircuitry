@@ -33,15 +33,32 @@ dt_tau_MN = 1 - dt / tau_MN;
 % if the required OI size is already fitted - load it
 % else - fit the desired circuit
 str = ['NetParm_Fuchs_N_', num2str(N), '.mat'];
-matFileNames = dir('*.mat');
+Folder = cd;
+Folder = fullfile(Folder, '..');
+matFileNames = dir(fullfile(Folder,'*.mat'));
 for i = 1 : length(matFileNames)
     if contains(matFileNames(i).name, str)
         break
     elseif i==length(matFileNames)
         disp('--------------------------------------')
-        disp('Sit back while we fit the circtuit....')
+        disp('Sit back while we fit the circuit.....')
         disp('--------------------------------------')
-        Fit_OI_circuit(N)
+        if N < 10000
+        % fit the entire circuit
+            Fit_OI_circuit(N)
+        elseif N > 10000
+            % use the 10,000 neurons fitted model (the file "NetParm_Fuchs_N_10000.mat") to upscale
+            % by considering duplicates of this network
+            load(str, 'xi', 'r0', 'eta')
+            % the number of duplicates
+            p = floor(N/10000);
+            % duplicate previous fitted model, keeping total input to each
+            % cell constant
+            xi = repmat(xi,p,1);
+            r0 = repmat(r0,p,1);
+            eta = repmat(eta,1,p)/p;
+        end
+            
     end
 end
 load(str, 'xi', 'r0', 'eta')
@@ -191,7 +208,7 @@ for i = 1:simtime
 end
 
 %% Saving:
-str = ['N=', num2str(N), '_ReduceSpike_', num2str(redOI), '_Adaptation_eps_', num2str(eps), '_EyePos_', num2str(SE), 'A_feed=', num2str(A_feed), 'tau_feed=', num2str(tau_feed), '_traj_', num2str(Seed), 'filter.mat'];
+str = ['N=', num2str(N), '_ReduceSpike_', num2str(redOI), '_Adaptation_eps_', num2str(eps), '_EyePos_', num2str(SE), 'A_feed=', num2str(A_feed), 'tau_feed=', num2str(tau_feed), '_traj_', num2str(Seed), '.mat'];
 SaveStruct.Fixation_position = SE;
 SaveStruct.reduceOIspikes = redOI;
 SaveStruct.N_OI = N;

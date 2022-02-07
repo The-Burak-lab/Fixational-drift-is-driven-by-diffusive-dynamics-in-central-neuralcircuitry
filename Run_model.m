@@ -38,14 +38,18 @@ parameters.MOD = MOD;
 save('parameters.mat','parameters')
 
 %% Run the simulation
+% Here several eye trajectories are genreated and saved to disk
 tic
-for ii = 1:length(NoOfTraj)
+for ii = 1:NoOfTraj
+    disp(['simulating traj ',num2str(ii),'/',num2str(NoOfTraj)] )
     parameters.Seed = ii;
     if strcmp(verbose, 'spike')
-        Full_model_simulation(parameters)
+        Full_model_simulation(parameters);
     elseif strcmp(verbose, 'rate')
         Model_wo_spiking_noise(parameters)
     end
 end
 toc
+%% Calculate MSD from saved eye traj.
+CalculateMSD();
 end

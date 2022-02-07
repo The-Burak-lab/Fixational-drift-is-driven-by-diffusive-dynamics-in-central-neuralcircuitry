@@ -28,7 +28,7 @@ C = [sinf(reqR)-sinf(reqL)];
 
 options = optimset('MaxIter',3000);% use optimoptions instead in new Mat vers
 eta =  lsqlin(C,E,[],[],[],[],(1/N/10)*ones(N,1),(100/N)*ones(N,1),[],options)'; 
-figure; plot(E,C(1:length(E),:)*eta'-E),hold on
+% figure; plot(E,C(1:length(E),:)*eta'-E),hold on
 save(['NetParm_Fuchs_N_',num2str(N),'.mat'],'xi','eta','r0')
 function sinf1 = sinf(r)
     sinf1 = r./(60+r);
