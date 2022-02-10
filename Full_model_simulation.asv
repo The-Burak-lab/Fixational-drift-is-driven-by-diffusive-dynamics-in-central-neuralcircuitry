@@ -20,7 +20,6 @@ SE = parameters.SE;
 MOD = parameters.MOD;
 A_feed = parameters.A_feed;
 Sig_DownStream = 0;
-r_0 = 60;
 %% Parameters
 rng(Seed);
 simtime = round(Time/dt);
@@ -33,10 +32,32 @@ dt_tau_MN = 1 - dt / tau_MN;
 % Set the tuning curves and their fit
 % if the required OI size is already fitted - load it
 % else - fit the desired circuit
-[xi, r0, eta] = Build_OI_circuit(N);
 
-% update the value of N according to fitted circuit
-N = length(xi);
+% str = ['NetParm_Fuchs_N_', num2str(N), '.mat'];
+% Folder = cd;
+% Folder = fullfile(Folder, '..');
+% matFileNames = dir(fullfile(Folder,'*.mat'));
+% for i = 1 : length(matFileNames)
+%     if contains(matFileNames(i).name, str)
+%         load(str, 'xi', 'r0', 'eta')
+%     elseif i==length(matFileNames)
+%         if N < 10000
+%         % fit the entire circuit
+%             disp('--------------------------------------')
+%             disp('Sit back while we fit the circuit.....')
+%             disp('--------------------------------------')
+%             Fit_OI_circuit(N)
+%         elseif N > 10000
+%             % use the 5,000 neurons fitted model (the file "NetParm_Fuchs_N_10000.mat") to upscale
+%             % by considering duplicates of this network
+%             [xi, r0, eta] = Duplicate_OI_circuit(N);
+%             N = length(xi);
+%         end
+%             
+%     end
+% end
+
+r_0 = 60;
 
 % set OMN tuning curves
 % The mat file contains 1000 OMNs. Adjust the required number of OMNs by

@@ -1,4 +1,4 @@
-function MSD = CalculateMSD(path)
+function MSD = CalculateMSD()
 % This function calculated the MSD of the computational model
 % Input:
 %           path: str, path to directory in which eye trajectories are save
@@ -11,7 +11,7 @@ function MSD = CalculateMSD(path)
 % load the MSD measured in data
 load('monkeys_MSD.mat')
 % if using Linux exchange \ -> /
-fname = dir([path,'\*.mat']);
+fname = dir('*.mat');
 X = []; % initialize arrat of actual eyetraj..
 for i = 1:length(fname) - 1
     load(fname(i).name)
