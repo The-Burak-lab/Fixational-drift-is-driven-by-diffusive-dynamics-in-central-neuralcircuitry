@@ -1,7 +1,8 @@
 # Fixational-drift-is-driven-by-diffusive-dynamics-in-central-neural-circuitry
-This repository provides the code of the computational model presented in the paper "Fixational drift is driven by diffusive dynamics"
+This repository provides the code of the computational model presented in the paper "Fixational drift is driven by diffusive dynamics". When using this code, please cite the paper. Currently please use the citation below, but please check here for updates on the appropriate citatation:
+bioRxiv 2021.02.10.430643; doi: https://doi.org/10.1101/2021.02.10.430643
 
-It includes several ".mat" files as follows:
+The repository includes several ".mat" files as follows:
 - monkeys_MSD: this file includes the raw data of the MSD calcaulted from the measurements for both monkeys.
 - NetParm_Fuchs_N_XXX: this file includes the tunining curves of XXX neurons in the monkeys oculomotor integrator. The tuning curves are sampled from a distribution measured in a paper by Fuchs, 1992. In addition it includes the readout vector, which was fitted such that a continum of fixed points is maintained by the dynamic of the network. The fitting process is done according to the paper: Functional dissection of circuitry in a neural integrator, 2007 by Aksay et-al. 
 - OMNparameters: this file includes the parameters of the OMNs based on information found in the literature (see paper for details). The parameters are the eye position threshold, position, velocity and accelration sensetivies. 
